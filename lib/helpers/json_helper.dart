@@ -1,5 +1,3 @@
-import 'package:intl/intl.dart';
-
 class JsonHelper {
   static int getIntValueFromJson(String jsonValue) {
     if (jsonValue == null || jsonValue.isEmpty) return null;
@@ -13,7 +11,7 @@ class JsonHelper {
 
   static DateTime getDateUnixFromJson(int jsonValue) {
     if (jsonValue == null) return null;
-    return DateTime.fromMillisecondsSinceEpoch(jsonValue);
+    return DateTime.fromMillisecondsSinceEpoch(jsonValue * 1000);
   }
 
   static int convertDateUnixToJson(DateTime dateTime) {
@@ -24,22 +22,22 @@ class JsonHelper {
   static DateTime getDateFromJsonString(String dateTimeJson) {
     if (dateTimeJson == null || dateTimeJson.isEmpty) return null;
 
-    return DateFormat().parse((dateTimeJson));
+    return DateTime.parse(dateTimeJson);
   }
 
   static DateTime getDateUtcFromJsonString(String dateTimeJson) {
     if (dateTimeJson == null || dateTimeJson.isEmpty) return null;
 
-    return DateFormat().parse((dateTimeJson), true);
+    return DateTime.parse(dateTimeJson).toUtc();
   }
 
   static String convertDateToJsonString(DateTime dateTime) {
     if (dateTime == null) return null;
-    return DateFormat().format(dateTime);
+    return dateTime.toString();
   }
 
   static String convertDateUtcToJsonString(DateTime dateTime) {
     if (dateTime == null) return null;
-    return DateFormat().format(dateTime.toUtc());
+    return dateTime.toUtc().toString();
   }
 }
