@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:spacex/view/src/app.dart';
 
 abstract class BaseRepository {
-  Future<dynamic> catchError(Object obj) async {
+  void catchError(Object obj) {
     switch (obj.runtimeType) {
       case DioError:
         final res = (obj as DioError).response;

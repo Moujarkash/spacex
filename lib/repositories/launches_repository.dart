@@ -22,13 +22,17 @@ class LaunchesRepository extends BaseRepository {
     return await _launchesRestClient
         .getNextLaunch()
         .then((value) => value)
-        .catchError(catchError);
+        .catchError((Object obj) {
+          catchError(obj);
+    });
   }
 
   Future<List<Launch>> getUpcomingLaunches() async {
     return await _launchesRestClient
         .getUpcomingLaunches()
         .then((value) => value)
-        .catchError(catchError);
+        .catchError((Object obj) {
+      catchError(obj);
+    });
   }
 }
