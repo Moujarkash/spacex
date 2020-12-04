@@ -7,27 +7,24 @@ part of 'launch.dart';
 // **************************************************************************
 
 Launch _$LaunchFromJson(Map<String, dynamic> json) {
-  return Launch()
-    ..flightNumber = json['flight_number'] as int
-    ..missionName = json['mission_name'] as String
-    ..missionId =
-        (json['mission_id'] as List)?.map((e) => e as String)?.toList()
-    ..launchYear = JsonHelper.getIntValueFromJson(json['launch_year'] as String)
-    ..launchDateUnix =
-        JsonHelper.getDateUnixFromJson(json['launch_date_unix'] as int)
-    ..launchDateUtc =
-        JsonHelper.getDateUtcFromJsonString(json['launch_date_utc'] as String)
-    ..launchDateLocalTime =
-        JsonHelper.getDateFromJsonString(json['launch_date_local'] as String)
-    ..rocket = json['rocket'] == null
+  return Launch(
+    json['flight_number'] as int,
+    json['mission_name'] as String,
+    (json['mission_id'] as List)?.map((e) => e as String)?.toList(),
+    JsonHelper.getIntValueFromJson(json['launch_year'] as String),
+    JsonHelper.getDateUnixFromJson(json['launch_date_unix'] as int),
+    JsonHelper.getDateUtcFromJsonString(json['launch_date_utc'] as String),
+    JsonHelper.getDateFromJsonString(json['launch_date_local'] as String),
+    json['rocket'] == null
         ? null
-        : Rocket.fromJson(json['rocket'] as Map<String, dynamic>)
-    ..launchSite = json['launch_site'] == null
+        : Rocket.fromJson(json['rocket'] as Map<String, dynamic>),
+    json['launch_site'] == null
         ? null
-        : LaunchSite.fromJson(json['launch_site'] as Map<String, dynamic>)
-    ..links = json['links'] == null
+        : LaunchSite.fromJson(json['launch_site'] as Map<String, dynamic>),
+    json['links'] == null
         ? null
-        : Links.fromJson(json['links'] as Map<String, dynamic>);
+        : Links.fromJson(json['links'] as Map<String, dynamic>),
+  );
 }
 
 Map<String, dynamic> _$LaunchToJson(Launch instance) => <String, dynamic>{

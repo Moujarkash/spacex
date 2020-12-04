@@ -23,6 +23,22 @@ class Launch {
   @JsonKey(name: 'launch_site')
   LaunchSite launchSite;
   Links links;
+
+  Launch(
+      this.flightNumber,
+      this.missionName,
+      this.missionId,
+      this.launchYear,
+      this.launchDateUnix,
+      this.launchDateUtc,
+      this.launchDateLocalTime,
+      this.rocket,
+      this.launchSite,
+      this.links);
+
+  factory Launch.fromJson(Map<String, dynamic> json) => _$LaunchFromJson(json);
+
+  Map<String, dynamic> toJson() => _$LaunchToJson(this);
 }
 
 @JsonSerializable()
