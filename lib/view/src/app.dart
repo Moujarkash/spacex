@@ -1,6 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:logger/logger.dart';
 import 'package:spacex/view/pages/home_page.dart';
+
+final Logger logger = Logger();
 
 class App extends StatelessWidget {
 
